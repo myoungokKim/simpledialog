@@ -8,12 +8,13 @@ import android.view.*;
 import android.widget.*;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-
+    String[] items={"젤리빈", "킷캣", "롤리팝"};
+    Button but;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button but=(Button)findViewById(R.id.but_dialog);
+        but=(Button)findViewById(R.id.but_dialog);
         but.setOnClickListener(this);
     }
 
@@ -24,9 +25,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     @Override
     public void onClick(View v) {
+
         AlertDialog.Builder dialog=new AlertDialog.Builder(this);
         dialog.setTitle("First Dialog");
-        dialog.setMessage("This is message.");
+        dialog.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                but.setText(items[which]);
+            }
+        });
         dialog.setIcon(R.drawable.first_icon);
         dialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
