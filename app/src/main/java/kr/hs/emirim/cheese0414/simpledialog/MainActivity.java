@@ -35,13 +35,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 but.setText(items[which]);
             }
         }); */
-        dialog.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
+        /* dialog.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 but.setText(items[which]);
             }
-        });
+        }); */
 
+        dialog.setMultiChoiceItems(items, checkArr, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                but.setText(items[which]);
+            }
+        });
 
         dialog.setIcon(R.drawable.first_icon);
         dialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
